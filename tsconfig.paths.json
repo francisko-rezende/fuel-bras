@@ -8,6 +8,9 @@
       "@lib/yup": [
         "./src/lib/yup/index"
       ],
+      "@hooks": [
+        "./src/hooks/index"
+      ],
       "@components": [
         "./src/components/index"
       ]
