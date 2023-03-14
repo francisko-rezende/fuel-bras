@@ -6,10 +6,10 @@ export const Main = () => {
   const fields = [
     { label: 'Placa', type: 'text' },
     { label: 'Modelo', type: 'text' },
-    { label: 'Capacidade', type: 'number' },
-    { label: 'Carga', type: 'number' },
-    { label: 'Consumo', type: 'number' },
-    { label: 'Distância', type: 'number' },
+    { label: 'Capacidade do tanque (litros)', type: 'number' },
+    { label: 'Carga máxima (toneladas)', type: 'number' },
+    { label: 'Consumo médio (litros por 100 quilômetros)', type: 'number' },
+    { label: 'Distância percorrida (quilômetros)', type: 'number' },
   ]
 
   return (
