@@ -5,6 +5,9 @@
       "@/*": [
         "./src/*"
       ],
+      "@lib/yup": [
+        "./src/lib/yup/index"
+      ],
       "@components": [
         "./src/components/index"
       ]
