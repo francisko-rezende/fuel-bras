@@ -1,0 +1,1 @@
+export { useAverageConsumptionForm } from "./useAverageConsumptionForm";
