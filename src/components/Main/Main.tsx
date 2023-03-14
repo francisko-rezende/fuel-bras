@@ -1,5 +1,6 @@
 import { Container, TextField, Typography } from "@mui/material"
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import { ResultCard } from "@components";
 
 export const Main = () => {
 
@@ -13,11 +14,12 @@ export const Main = () => {
   ]
 
   return (
-    <Container component='main' sx={{ marginTop: '60px', display: 'flex', flexDirection: 'column' }} maxWidth='sm'>
+    <Container component='main' sx={{ marginTop: '60px', display: 'flex', flexDirection: 'column', gap: '30px' }} maxWidth='sm'>
       <Typography variant="h2" component="h2" sx={{ fontSize: '2rem', fontFamily: 'Nunito Sans' }}>
         Novo cálculo
       </Typography>
-      <form style={{ marginTop: '30px' }}>
+      <ResultCard />
+      <form>
         <Grid container spacing={2} columns={1}>
           {fields.map(({ label, type }) =>
             <Grid xs={8} key={label}>
