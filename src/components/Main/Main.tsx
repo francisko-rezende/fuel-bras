@@ -16,7 +16,6 @@ export const Main = () => {
         flexDirection: "column",
         gap: "30px",
       }}
-      maxWidth="sm"
     >
       <Typography
         variant="h2"
@@ -36,6 +35,7 @@ export const Main = () => {
           {fields.map(({ label, type, formikValue }) => (
             <Grid xs={8} key={label}>
               <TextField
+                placeholder={label === "Placa" ? "AAA0A00" : ""}
                 id={formikValue}
                 name={formikValue}
                 label={label}
