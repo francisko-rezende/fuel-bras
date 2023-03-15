@@ -36,6 +36,7 @@ export const Main = () => {
           {fields.map(({ label, type, formikValue }) => (
             <Grid xs={8} key={label}>
               <TextField
+                placeholder={label === "Placa" ? "AAA0A00" : ""}
                 id={formikValue}
                 name={formikValue}
                 label={label}
