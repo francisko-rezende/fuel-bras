@@ -1,6 +1,7 @@
 import { type FuelConsumptionHistoryItem } from "@types";
 import { Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { HistoryTable } from "@components";
 
 export const History = () => {
   const [history, setHistory] = useState<FuelConsumptionHistoryItem[]>([]);
@@ -21,8 +22,8 @@ export const History = () => {
         display: "flex",
         flexDirection: "column",
         gap: "30px",
+        overflow: "auto",
       }}
-      maxWidth="sm"
     >
       <Typography
         variant="h2"
@@ -32,19 +33,7 @@ export const History = () => {
         Histórico
       </Typography>
 
-      {history.length !== 0 &&
-        history.map(
-          (
-            { licensePlate, formattedAverageFuelConsumptionByTonByKm },
-            index,
-          ) => {
-            return (
-              <li key={index}>
-                {licensePlate}, {formattedAverageFuelConsumptionByTonByKm} l / t
-              </li>
-            );
-          },
-        )}
+      {history.length !== 0 && <HistoryTable rows={history} />}
     </Container>
   );
 };
