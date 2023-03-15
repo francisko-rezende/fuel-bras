@@ -37,7 +37,7 @@ export function Header() {
 
   return (
     <AppBar position="static" component="header">
-      <Container maxWidth="xl">
+      <Container>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
