@@ -11,6 +11,15 @@
       "@hooks": [
         "./src/hooks/index"
       ],
+      "@routes": [
+        "./src/routes/index"
+      ],
+      "@types": [
+        "./src/types/index"
+      ],
+      "@utils": [
+        "./src/utils/index"
+      ],
       "@components": [
         "./src/components/index"
       ]
