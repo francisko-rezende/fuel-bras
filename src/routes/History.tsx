@@ -1,18 +1,13 @@
-import { type FuelConsumptionHistoryItem } from "@types";
 import { Container, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 import { HistoryTable } from "@components";
+import { useHistory } from "@hooks";
 
 export const History = () => {
-  const [history, setHistory] = useState<FuelConsumptionHistoryItem[]>([]);
-  useEffect(() => {
-    const localStorageHistory = localStorage.getItem("history");
-    if (localStorageHistory != null) {
-      const history: FuelConsumptionHistoryItem[] =
-        JSON.parse(localStorageHistory);
-      setHistory(history);
-    }
-  }, []);
+  const { data, isError, isLoading } = useHistory();
+
+  if (isLoading) return <p>Carregando...</p>;
+
+  if (isError) return <p>Houve um erro, tente novamente mais tarde.</p>;
 
   return (
     <Container
@@ -33,7 +28,7 @@ export const History = () => {
         Histórico
       </Typography>
 
-      {history.length !== 0 && <HistoryTable rows={history} />}
+      {history.length !== 0 && <HistoryTable rows={data} />}
     </Container>
   );
 };
