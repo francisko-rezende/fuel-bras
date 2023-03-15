@@ -1,9 +1,6 @@
-import {
-  type FuelConsumptionHistoryItem,
-  type fuelConsumptionData,
-} from "@types";
-import { useLocalStorage } from "@hooks";
-import { schemas } from "@/lib/yup";
+import { type fuelConsumptionData } from "@types";
+import { usePostHistoryItem } from "@hooks";
+import { schemas } from "@lib/yup";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { formatNumberPtBr } from "@utils";
@@ -35,11 +32,8 @@ const fields = [
 
 export const useAverageConsumptionForm = () => {
   const [avgConsumptionPerTon, setAvgConsumptionPerTon] = useState("");
-  const [currentLicensePlate, setcurrentLicensePlate] = useState("");
-  const [history, setHistory] = useLocalStorage<FuelConsumptionHistoryItem[]>(
-    "history",
-    [],
-  );
+  const [currentLicensePlate, setCurrentLicensePlate] = useState("");
+  const historyMutation = usePostHistoryItem();
 
   const initialValues: fuelConsumptionData = {
     licensePlate: "",
@@ -61,15 +55,14 @@ export const useAverageConsumptionForm = () => {
       averageFuelConsumptionByTonByKm,
     );
     setAvgConsumptionPerTon(formattedAverageFuelConsumptionByTonByKm);
-    setcurrentLicensePlate(licensePlate);
-    setHistory([
-      {
-        id: Math.random(),
-        ...values,
-        formattedAverageFuelConsumptionByTonByKm,
-      },
-      ...history,
-    ]);
+    setCurrentLicensePlate(licensePlate);
+
+    const newHistoryItem = {
+      ...values,
+      formattedAverageFuelConsumptionByTonByKm,
+    };
+
+    historyMutation.mutate(newHistoryItem);
   };
 
   const formik = useFormik({
