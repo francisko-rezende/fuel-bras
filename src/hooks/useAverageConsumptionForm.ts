@@ -1,10 +1,20 @@
+import {
+  type FuelConsumptionHistoryItem,
+  type fuelConsumptionData,
+} from "@types";
+import { useLocalStorage } from "@hooks";
 import { schemas } from "@/lib/yup";
 import { useFormik } from "formik";
 import { useState } from "react";
+import { formatNumberPtBr } from "@utils";
 
 export const useAverageConsumptionForm = () => {
   const [avgConsumptionPerTon, setAvgConsumptionPerTon] = useState("");
   const [currentLicensePlate, setcurrentLicensePlate] = useState("");
+  const [history, setHistory] = useLocalStorage<FuelConsumptionHistoryItem[]>(
+    "history",
+    [],
+  );
 
   const fields = [
     { label: "Placa", type: "text", formikValue: "licensePlate" },
@@ -31,7 +41,7 @@ export const useAverageConsumptionForm = () => {
     },
   ] as const;
 
-  const initialValues = {
+  const initialValues: fuelConsumptionData = {
     licensePlate: "",
     model: "",
     maxFuelCapacity: 0,
@@ -40,18 +50,22 @@ export const useAverageConsumptionForm = () => {
     traveledDistance: 0,
   };
 
-  const handleSubmit = (values: typeof initialValues) => {
+  const handleSubmit = (values: fuelConsumptionData) => {
     const { licensePlate, maxLoad, averageFuelConsumption, traveledDistance } =
       values;
 
     const averageLoadByKm = maxLoad / (traveledDistance * 0.001);
     const averageFuelConsumptionByTonByKm =
       ((averageFuelConsumption / 100) * 1000) / (averageLoadByKm * 1000);
-    const formattedAverageFuelConsumptionByTonByKm = new Intl.NumberFormat(
-      "pt-BR",
-    ).format(averageFuelConsumptionByTonByKm);
+    const formattedAverageFuelConsumptionByTonByKm = formatNumberPtBr(
+      averageFuelConsumptionByTonByKm,
+    );
     setAvgConsumptionPerTon(formattedAverageFuelConsumptionByTonByKm);
     setcurrentLicensePlate(licensePlate);
+    setHistory([
+      { ...values, formattedAverageFuelConsumptionByTonByKm },
+      ...history,
+    ]);
   };
 
   const formik = useFormik({
