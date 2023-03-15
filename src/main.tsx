@@ -6,6 +6,9 @@ import { theme } from "./theme/theme";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root, History } from "@routes";
 import { Main } from "@components";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@lib/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +23,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+      </ThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 );
