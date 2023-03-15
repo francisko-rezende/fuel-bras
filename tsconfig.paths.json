@@ -5,11 +5,20 @@
       "@/*": [
         "./src/*"
       ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
       "@lib/yup": [
         "./src/lib/yup/index"
       ],
+      "@api": [
+        "./src/api/index"
+      ],
       "@hooks": [
         "./src/hooks/index"
+      ],
+      "@config": [
+        "./src/config/index"
       ],
       "@routes": [
         "./src/routes/index"
