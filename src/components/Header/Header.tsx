@@ -33,6 +33,8 @@ export function Header() {
   const StyledLink = styled(Link)`
     text-decoration: none;
     color: inherit;
+    display: flex;
+    align-items: center;
   `;
 
   return (
@@ -42,8 +44,6 @@ export function Header() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -54,10 +54,12 @@ export function Header() {
               textDecoration: "none",
             }}
           >
-            <LocalGasStation
-              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-            />
-            FuelBras
+            <StyledLink to="/">
+              <LocalGasStation
+                sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+              />
+              FuelBras
+            </StyledLink>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -98,26 +100,25 @@ export function Header() {
               ))}
             </Menu>
           </Box>
-          <LocalGasStation
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              // fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            FuelBras
+            <StyledLink to="/">
+              <LocalGasStation
+                sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+              />
+              FuelBras
+            </StyledLink>
           </Typography>
           <Box
             component="ul"
