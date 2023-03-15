@@ -1,11 +1,11 @@
 import { Container, Typography } from "@mui/material";
-import { HistoryTable } from "@components";
+import { HistoryTable, TableShimmer } from "@components";
 import { useHistory } from "@hooks";
 
 export const History = () => {
   const { data, isError, isLoading } = useHistory();
 
-  if (isLoading) return <p>Carregando...</p>;
+  if (isLoading) return <TableShimmer />;
 
   if (isError) return <p>Houve um erro, tente novamente mais tarde.</p>;
 
@@ -27,7 +27,6 @@ export const History = () => {
       >
         Histórico
       </Typography>
-
       {history.length !== 0 && <HistoryTable rows={data} />}
     </Container>
   );
