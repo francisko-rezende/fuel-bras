@@ -16,7 +16,6 @@ export const Main = () => {
         flexDirection: "column",
         gap: "30px",
       }}
-      maxWidth="sm"
     >
       <Typography
         variant="h2"
