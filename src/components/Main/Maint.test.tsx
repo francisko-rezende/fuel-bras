@@ -1,7 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import { describe } from "vitest";
+import { describe, vi } from "vitest";
 import { Main } from "./Main";
 import userEvent from "@testing-library/user-event";
+
+vi.mock("@tanstack/react-query", () => ({
+  useMutation: vi.fn(),
+  QueryClient: vi.fn(),
+}));
 
 describe("Main.tsx", () => {
   it("should render properly", () => {
