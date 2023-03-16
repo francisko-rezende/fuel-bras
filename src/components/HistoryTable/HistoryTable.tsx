@@ -11,7 +11,7 @@ const tableHeadings = [
   "Placa",
   "Consumo de Combustível (l / t)",
   "Modelo",
-  "Carga Máxima",
+  "Carga Máxima (t)",
   "Consumo Médio (l / 100km)",
   "Distância (km)",
 ];
@@ -21,7 +21,6 @@ interface HistoryTableProps {
 }
 
 export const HistoryTable = ({ rows }: HistoryTableProps) => {
-  console.log(rows.map(({ id }) => id));
   return (
     <TableContainer component={Paper}>
       <Table aria-label="Tabela das médias de consumo de combustível em litros por toneladas">
@@ -35,23 +34,33 @@ export const HistoryTable = ({ rows }: HistoryTableProps) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.licensePlate}
-              </TableCell>
-              <TableCell align="left">
-                {row.formattedAverageFuelConsumptionByTonByKm}
-              </TableCell>
-              <TableCell align="left">{row.model}</TableCell>
-              <TableCell align="left">{row.maxLoad}</TableCell>
-              <TableCell align="left">{row.averageFuelConsumption}</TableCell>
-              <TableCell align="left">{row.traveledDistance}</TableCell>
-            </TableRow>
-          ))}
+          {rows.map(
+            ({
+              id,
+              model,
+              maxLoad,
+              averageFuelConsumption,
+              traveledDistance,
+              licensePlate,
+              formattedAverageFuelConsumptionByTonByKm,
+            }) => (
+              <TableRow
+                key={id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {licensePlate}
+                </TableCell>
+                <TableCell align="left">
+                  {formattedAverageFuelConsumptionByTonByKm}
+                </TableCell>
+                <TableCell align="left">{model}</TableCell>
+                <TableCell align="left">{maxLoad}</TableCell>
+                <TableCell align="left">{averageFuelConsumption}</TableCell>
+                <TableCell align="left">{traveledDistance}</TableCell>
+              </TableRow>
+            ),
+          )}
         </TableBody>
       </Table>
     </TableContainer>
