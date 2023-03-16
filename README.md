@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/favicon.svg" width="200"" height="94.12" alt="labCAR" />
+  <img src="public/favicon.svg" width="200"" height="94.12" alt="FuelBras" />
 </p>
 
 ## Descrição
@@ -11,7 +11,8 @@ Além disso, o FuelBras apresenta um recurso adicional que mantém um histórico
 ## Feito usando
 
 - ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-- Vite ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+- ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+- [Vitest](https://vitest.dev/)
 - ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
 - ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 
@@ -42,7 +43,8 @@ Após executar esse comando, o app ficará disponível no endereço: `http://loc
 
 - Autor - Francisko de Moraes Rezende
 - [Linkedin](https://linkedin.com/in/francisko-rezende)
-- Twitter - [@francisko_r](https://twitter.com/francisko_r)
+- [Twitter ](https://twitter.com/francisko_r)
+- [site pessoal](https://francisko/dev)
 
 ## Licença
 
