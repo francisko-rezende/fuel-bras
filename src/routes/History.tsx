@@ -1,5 +1,5 @@
 import { type FuelConsumptionHistoryItem } from "@types";
-import { Container, Typography } from "@mui/material";
+import { Button, Container, Typography, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import { HistoryTable } from "@components";
 
@@ -14,6 +14,13 @@ export const History = () => {
     }
   }, []);
 
+  const handleResetHistory = () => {
+    localStorage.clear();
+    setHistory([]);
+  };
+
+  const isHistoryEmpty = history.length === 0;
+
   return (
     <Container
       component="main"
@@ -25,13 +32,22 @@ export const History = () => {
         overflow: "auto",
       }}
     >
-      <Typography
-        variant="h2"
-        component="h2"
-        sx={{ fontSize: "2rem", fontFamily: "Nunito Sans" }}
-      >
-        Histórico
-      </Typography>
+      <Stack direction="row" justifyContent="space-between">
+        <Typography
+          variant="h2"
+          component="h2"
+          sx={{ fontSize: "2rem", fontFamily: "Nunito Sans" }}
+        >
+          Histórico
+        </Typography>
+        <Button
+          variant="contained"
+          disabled={isHistoryEmpty}
+          onClick={handleResetHistory}
+        >
+          Limpar histórico
+        </Button>
+      </Stack>
 
       {history.length !== 0 && <HistoryTable rows={history} />}
     </Container>
