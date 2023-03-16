@@ -1,25 +1,13 @@
-import { type FuelConsumptionHistoryItem } from "@types";
-import { Button, Container, Typography, Stack } from "@mui/material";
-import { useEffect, useState } from "react";
-import { HistoryTable } from "@components";
+import { Container, Typography } from "@mui/material";
+import { HistoryTable, TableShimmer } from "@components";
+import { useHistory } from "@hooks";
 
 export const History = () => {
-  const [history, setHistory] = useState<FuelConsumptionHistoryItem[]>([]);
-  useEffect(() => {
-    const localStorageHistory = localStorage.getItem("history");
-    if (localStorageHistory != null) {
-      const history: FuelConsumptionHistoryItem[] =
-        JSON.parse(localStorageHistory);
-      setHistory(history);
-    }
-  }, []);
+  const { data, isError, isLoading } = useHistory();
 
-  const handleResetHistory = () => {
-    localStorage.clear();
-    setHistory([]);
-  };
+  if (isLoading) return <TableShimmer />;
 
-  const isHistoryEmpty = history.length === 0;
+  if (isError) return <p>Houve um erro, tente novamente mais tarde.</p>;
 
   return (
     <Container
@@ -32,24 +20,14 @@ export const History = () => {
         overflow: "auto",
       }}
     >
-      <Stack direction="row" justifyContent="space-between">
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ fontSize: "2rem", fontFamily: "Nunito Sans" }}
-        >
-          Histórico
-        </Typography>
-        <Button
-          variant="contained"
-          disabled={isHistoryEmpty}
-          onClick={handleResetHistory}
-        >
-          Limpar histórico
-        </Button>
-      </Stack>
-
-      {history.length !== 0 && <HistoryTable rows={history} />}
+      <Typography
+        variant="h2"
+        component="h2"
+        sx={{ fontSize: "2rem", fontFamily: "Nunito Sans" }}
+      >
+        Histórico
+      </Typography>
+      {history.length !== 0 && <HistoryTable rows={data} />}
     </Container>
   );
 };

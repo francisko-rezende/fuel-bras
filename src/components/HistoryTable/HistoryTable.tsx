@@ -21,7 +21,6 @@ interface HistoryTableProps {
 }
 
 export const HistoryTable = ({ rows }: HistoryTableProps) => {
-  console.log(rows.map(({ id }) => id));
   return (
     <TableContainer component={Paper}>
       <Table aria-label="Tabela das médias de consumo de combustível em litros por toneladas">
