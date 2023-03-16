@@ -39,7 +39,7 @@ $ yarn dev
 
 Após executar esse comando, o app ficará disponível no endereço: `http://localhost:5174/`
 
-## Entre en contato
+## Entre em contato
 
 - Autor - Francisko de Moraes Rezende
 - [Linkedin](https://linkedin.com/in/francisko-rezende)
