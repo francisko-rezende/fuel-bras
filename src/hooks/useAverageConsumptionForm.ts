@@ -62,14 +62,13 @@ export const useAverageConsumptionForm = () => {
     );
     setAvgConsumptionPerTon(formattedAverageFuelConsumptionByTonByKm);
     setcurrentLicensePlate(licensePlate);
-    setHistory([
-      {
-        id: Math.random(),
-        ...values,
-        formattedAverageFuelConsumptionByTonByKm,
-      },
-      ...history,
-    ]);
+    const newHistoryItem = {
+      id: Math.random(),
+      ...values,
+      formattedAverageFuelConsumptionByTonByKm,
+    };
+    const updatedHistory = [newHistoryItem, ...history];
+    setHistory(updatedHistory);
   };
 
   const formik = useFormik({
