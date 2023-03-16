@@ -7,6 +7,10 @@ export const Main = () => {
   const { avgConsumptionPerTon, currentLicensePlate, fields, formik } =
     useAverageConsumptionForm();
 
+  const handleResetForm = () => {
+    formik.resetForm();
+  };
+
   return (
     <Container
       component="main"
@@ -58,8 +62,11 @@ export const Main = () => {
         <Stack
           sx={{ marginBlockStart: "16px" }}
           direction="row"
-          justifyContent="end"
+          justifyContent="space-between"
         >
+          <Button variant="outlined" type="button" onClick={handleResetForm}>
+            Limpar formulário
+          </Button>
           <Button variant="contained" type="submit">
             Calcular
           </Button>
