@@ -37,7 +37,7 @@ $ yarn test
 $ yarn dev
 ```
 
-Após executar esse comando, o app ficará disponível no endereço: `http://localhost:5174/`
+Após executar esse comando, o app ficará disponível no endereço mostrado no console, normalmente `http://localhost:5173/`.
 
 ## Entre em contato
 
